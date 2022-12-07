@@ -5,7 +5,7 @@ Feb. 2019 by kyubyong park.
 kbpark.linguist@gmail.com.
 https://www.github.com/kyubyong/transformer
 '''
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 from model import Transformer
 from tqdm import tqdm

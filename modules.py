@@ -9,7 +9,7 @@ Building blocks for Transformer
 '''
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 def ln(inputs, epsilon = 1e-8, scope="ln"):
     '''Applies layer normalization. See https://arxiv.org/abs/1607.06450.
@@ -43,11 +43,12 @@ def get_token_embeddings(vocab_size, num_units, zero_pad=True):
     Returns
     weight variable: (V, E)
     '''
+    print(tf.layers.__dict__)
     with tf.variable_scope("shared_weight_matrix"):
         embeddings = tf.get_variable('weight_mat',
                                    dtype=tf.float32,
                                    shape=(vocab_size, num_units),
-                                   initializer=tf.contrib.layers.xavier_initializer())
+                                   initializer=tf.keras.initializers.glorot_normal())
         if zero_pad:
             embeddings = tf.concat((tf.zeros(shape=[1, num_units]),
                                     embeddings[1:, :]), 0)

@@ -8,12 +8,15 @@ https://www.github.com/kyubyong/transformer.
 Utility functions
 '''
 
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 # from tensorflow.python import pywrap_tensorflow
 # import numpy as np
 import json
 import os, re
 import logging
+
+
+tf.disable_eager_execution()
 
 logging.basicConfig(level=logging.INFO)
 
